@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainScreenViewController" customModule="Rick___Morty" customModuleProvider="target">
+            <connections>
+                <outlet property="charactersCollectionView" destination="pu1-8g-uiD" id="wQw-pt-Oka"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainVCBackground" translatesAutoresizingMaskIntoConstraints="NO" id="wHw-HD-wrV">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainVCBackGroundLayer" translatesAutoresizingMaskIntoConstraints="NO" id="qOu-FQ-kCJ">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                </imageView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="pu1-8g-uiD">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="235-yR-uKx">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="wHw-HD-wrV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="0eb-7X-SI5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pu1-8g-uiD" secondAttribute="trailing" id="1HL-Vq-zd1"/>
+                <constraint firstItem="pu1-8g-uiD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="7aW-Jm-e5x"/>
+                <constraint firstItem="qOu-FQ-kCJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="93F-MM-KfM"/>
+                <constraint firstItem="wHw-HD-wrV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Mlx-Ix-426"/>
+                <constraint firstItem="pu1-8g-uiD" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="YK4-Tt-gJ9"/>
+                <constraint firstAttribute="trailing" secondItem="qOu-FQ-kCJ" secondAttribute="trailing" id="YTY-EU-3i5"/>
+                <constraint firstAttribute="trailing" secondItem="wHw-HD-wrV" secondAttribute="trailing" id="cb7-Ye-dh4"/>
+                <constraint firstAttribute="bottom" secondItem="wHw-HD-wrV" secondAttribute="bottom" id="ckZ-hW-xG8"/>
+                <constraint firstAttribute="bottom" secondItem="qOu-FQ-kCJ" secondAttribute="bottom" id="cxY-1E-OFh"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="pu1-8g-uiD" secondAttribute="bottom" id="dEz-Qd-VC6"/>
+                <constraint firstItem="qOu-FQ-kCJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="q5W-Hr-JWb"/>
+            </constraints>
+            <point key="canvasLocation" x="-59" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="mainVCBackGroundLayer" width="375" height="493"/>
+        <image name="mainVCBackground" width="375" height="493"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

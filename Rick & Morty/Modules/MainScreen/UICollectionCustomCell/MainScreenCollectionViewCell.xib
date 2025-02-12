@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CellID" id="gTV-IL-0wX" customClass="MainScreenCollectionViewCell" customModule="Rick___Morty" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="498" height="169"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="498" height="169"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainVCBackground" translatesAutoresizingMaskIntoConstraints="NO" id="eoF-9Q-GuU">
+                        <rect key="frame" x="0.0" y="0.0" width="169" height="169"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="eoF-9Q-GuU" secondAttribute="height" multiplier="1:1" id="nJn-ND-sN3"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rick Sanchez" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrN-b8-wby">
+                        <rect key="frame" x="185" y="9.9999999999999982" width="297" height="20.333333333333329"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="LrN-b8-wby" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="1Uu-hj-LVf"/>
+                <constraint firstItem="eoF-9Q-GuU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="BVv-Tl-Si9"/>
+                <constraint firstAttribute="bottom" secondItem="eoF-9Q-GuU" secondAttribute="bottom" id="FKv-zk-z31"/>
+                <constraint firstItem="eoF-9Q-GuU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="eKL-gh-AnS"/>
+                <constraint firstAttribute="trailing" secondItem="LrN-b8-wby" secondAttribute="trailing" constant="16" id="os8-b3-mXs"/>
+                <constraint firstItem="LrN-b8-wby" firstAttribute="leading" secondItem="eoF-9Q-GuU" secondAttribute="trailing" constant="16" id="wXp-9N-MCC"/>
+            </constraints>
+            <size key="customSize" width="498" height="169"/>
+            <connections>
+                <outlet property="characterImageView" destination="eoF-9Q-GuU" id="0jU-2P-QMO"/>
+                <outlet property="nameLabel" destination="LrN-b8-wby" id="7d1-Bl-VSo"/>
+            </connections>
+            <point key="canvasLocation" x="375.57251908396944" y="-22.183098591549296"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="mainVCBackground" width="375" height="493"/>
+    </resources>
+</document>
