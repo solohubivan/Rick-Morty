@@ -9,9 +9,10 @@ import UIKit
 
 class MainScreenCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var characterImageView: UIImageView!
-    
+    @IBOutlet weak private var nameLabel: UILabel!
+    @IBOutlet weak private var characterImageView: UIImageView!
+    @IBOutlet weak private var aliveAndSpeciesLabel: UILabel!
+    @IBOutlet weak private var characterOriginLabel: UILabel!
     private var blurView: UIVisualEffectView?
     
     override func awakeFromNib() {
@@ -19,11 +20,15 @@ class MainScreenCollectionViewCell: UICollectionViewCell {
         setupUI()
     }
     
+    // MARK: - Public methods
     func updateUI(with data: CharacterModel) {
         nameLabel.text = data.name
         loadImage(from: data.image)
+        aliveAndSpeciesLabel.text = "\(data.status.capitalized) - \(data.species.capitalized)"
+        characterOriginLabel.text = "Origin: \(data.origin.name)"
     }
     
+    // MARK: - Private methods
     private func loadImage(from urlString: String) {
         guard let url = URL(string: urlString) else { return }
 
@@ -35,14 +40,17 @@ class MainScreenCollectionViewCell: UICollectionViewCell {
             }
         }.resume()
     }
-    
-    
+}
+
+// MARK: - Setup UI
+extension MainScreenCollectionViewCell {
     
     private func setupUI() {
         self.layer.cornerRadius = 10
         setupBlurBackground()
         setupNameLabel()
-        setupCharacterImageView()
+        setupAliveAndSpeciesLabel()
+        setupCharacterOriginLabel()
     }
     
     private func setupBlurBackground() {
@@ -56,9 +64,14 @@ class MainScreenCollectionViewCell: UICollectionViewCell {
     
     private func setupNameLabel() {
         nameLabel.textColor = .white
+        nameLabel.font = UIFont(name: "OpenSans-SemiBold", size: 24)
     }
     
-    private func setupCharacterImageView() {
-        characterImageView.image = UIImage(named: "mainVCBackground")
+    private func setupAliveAndSpeciesLabel() {
+        aliveAndSpeciesLabel.font = UIFont(name: "OpenSans-Regular", size: 18)
+    }
+    
+    private func setupCharacterOriginLabel() {
+        characterOriginLabel.font = UIFont(name: "OpenSans-Regular", size: 16)
     }
 }

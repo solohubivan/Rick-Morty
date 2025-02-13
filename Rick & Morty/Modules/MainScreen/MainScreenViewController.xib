@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -27,8 +26,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                 </imageView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="pu1-8g-uiD">
-                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="235-yR-uKx">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -50,7 +49,7 @@
                 <constraint firstAttribute="trailing" secondItem="wHw-HD-wrV" secondAttribute="trailing" id="cb7-Ye-dh4"/>
                 <constraint firstAttribute="bottom" secondItem="wHw-HD-wrV" secondAttribute="bottom" id="ckZ-hW-xG8"/>
                 <constraint firstAttribute="bottom" secondItem="qOu-FQ-kCJ" secondAttribute="bottom" id="cxY-1E-OFh"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="pu1-8g-uiD" secondAttribute="bottom" id="dEz-Qd-VC6"/>
+                <constraint firstAttribute="bottom" secondItem="pu1-8g-uiD" secondAttribute="bottom" id="dEz-Qd-VC6"/>
                 <constraint firstItem="qOu-FQ-kCJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="q5W-Hr-JWb"/>
             </constraints>
             <point key="canvasLocation" x="-59" y="20"/>
@@ -59,8 +58,5 @@
     <resources>
         <image name="mainVCBackGroundLayer" width="375" height="493"/>
         <image name="mainVCBackground" width="375" height="493"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

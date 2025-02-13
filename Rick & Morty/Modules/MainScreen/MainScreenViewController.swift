@@ -13,9 +13,10 @@ protocol MainScreenDisplayLogic: AnyObject {
 
 class MainScreenViewController: UIViewController {
     
-    @IBOutlet weak var charactersCollectionView: UICollectionView!
+    @IBOutlet weak private var charactersCollectionView: UICollectionView!
     
     private var interactor: MainScreenBusinessLogic?
+    private var router: MainScreenRoutingLogic?
     
     private var characters: [CharacterModel] = []
     
@@ -26,13 +27,21 @@ class MainScreenViewController: UIViewController {
         interactor?.fetchCharacters()
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        charactersCollectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    // MARK: - Private methods
     private func setupCleanSwift() {
         let interactor = MainScreenInteractor()
         let presenter = MainScreenPresenter()
+        let router = MainScreenRouter()
         
         interactor.presenter = presenter
         presenter.viewController = self
         self.interactor = interactor
+        self.router = router
     }
 }
 
@@ -53,9 +62,12 @@ extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         
         return cell
     }
-        
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (collectionView.frame.width - 32)
+        let itemsPerRow: CGFloat = UIDevice.current.orientation.isLandscape ? 2 : 1
+        let padding: CGFloat = 32
+        let totalSpacing = (itemsPerRow) * padding
+        let width = (collectionView.frame.width - totalSpacing) / itemsPerRow
         return CGSize(width: width, height: width / 2.5)
     }
     
@@ -67,6 +79,13 @@ extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         if offsetY > contentHeight - frameHeight * 1.5 {
             interactor?.fetchCharacters()
         }
+        
+        navigationController?.navigationBar.prefersLargeTitles = offsetY <= 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let character = characters[indexPath.item]
+        router?.routeToDetailScreen(from: self, with: character)
     }
 }
 
@@ -81,7 +100,16 @@ extension MainScreenViewController: MainScreenDisplayLogic {
 // MARK: - Setup UI
 extension MainScreenViewController {
     private func setupUI() {
+        self.title = "Rick and Morty"
+        setupNavigationVC()
         setupCharactersCollectionView()
+    }
+    
+    private func setupNavigationVC() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
+        navigationController?.modalPresentationStyle = .fullScreen
+        navigationController?.overrideUserInterfaceStyle = .light
     }
 
     private func setupCharactersCollectionView() {

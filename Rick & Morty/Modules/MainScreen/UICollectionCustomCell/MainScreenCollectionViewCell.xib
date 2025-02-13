@@ -23,10 +23,22 @@
                             <constraint firstAttribute="width" secondItem="eoF-9Q-GuU" secondAttribute="height" multiplier="1:1" id="nJn-ND-sN3"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rick Sanchez" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrN-b8-wby">
-                        <rect key="frame" x="185" y="9.9999999999999982" width="297" height="20.333333333333329"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rick Sanchez" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrN-b8-wby">
+                        <rect key="frame" x="185" y="0.0" width="297" height="20.333333333333332"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alive - Human" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHK-hL-7wC" userLabel="Alive and species Label">
+                        <rect key="frame" x="185" y="20.333333333333336" width="303" height="20.333333333333336"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From: Post-Apocaliptic Earth" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xij-mb-PaJ">
+                        <rect key="frame" x="185" y="50.666666666666664" width="303" height="20.333333333333336"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -34,16 +46,25 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="LrN-b8-wby" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="1Uu-hj-LVf"/>
+                <constraint firstItem="LrN-b8-wby" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1Uu-hj-LVf"/>
+                <constraint firstAttribute="trailing" secondItem="iHK-hL-7wC" secondAttribute="trailing" constant="10" id="AHf-LL-CMh"/>
                 <constraint firstItem="eoF-9Q-GuU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="BVv-Tl-Si9"/>
                 <constraint firstAttribute="bottom" secondItem="eoF-9Q-GuU" secondAttribute="bottom" id="FKv-zk-z31"/>
+                <constraint firstItem="iHK-hL-7wC" firstAttribute="leading" secondItem="eoF-9Q-GuU" secondAttribute="trailing" constant="16" id="L8q-WA-o02"/>
+                <constraint firstItem="xij-mb-PaJ" firstAttribute="top" secondItem="iHK-hL-7wC" secondAttribute="bottom" constant="10" id="RNm-0C-uRQ"/>
                 <constraint firstItem="eoF-9Q-GuU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="eKL-gh-AnS"/>
+                <constraint firstItem="iHK-hL-7wC" firstAttribute="top" secondItem="LrN-b8-wby" secondAttribute="bottom" id="edg-La-0qW"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="xij-mb-PaJ" secondAttribute="bottom" constant="5" id="m8j-Xa-eBJ"/>
+                <constraint firstItem="xij-mb-PaJ" firstAttribute="leading" secondItem="eoF-9Q-GuU" secondAttribute="trailing" constant="16" id="o3j-3S-10v"/>
                 <constraint firstAttribute="trailing" secondItem="LrN-b8-wby" secondAttribute="trailing" constant="16" id="os8-b3-mXs"/>
+                <constraint firstAttribute="trailing" secondItem="xij-mb-PaJ" secondAttribute="trailing" constant="10" id="pwV-UE-8NA"/>
                 <constraint firstItem="LrN-b8-wby" firstAttribute="leading" secondItem="eoF-9Q-GuU" secondAttribute="trailing" constant="16" id="wXp-9N-MCC"/>
             </constraints>
             <size key="customSize" width="498" height="169"/>
             <connections>
+                <outlet property="aliveAndSpeciesLabel" destination="iHK-hL-7wC" id="CU3-30-oO9"/>
                 <outlet property="characterImageView" destination="eoF-9Q-GuU" id="0jU-2P-QMO"/>
+                <outlet property="characterOriginLabel" destination="xij-mb-PaJ" id="N8B-5l-Tvn"/>
                 <outlet property="nameLabel" destination="LrN-b8-wby" id="7d1-Bl-VSo"/>
             </connections>
             <point key="canvasLocation" x="375.57251908396944" y="-22.183098591549296"/>

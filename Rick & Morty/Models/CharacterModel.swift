@@ -15,9 +15,14 @@ struct CharacterModel: Decodable {
     let gender: String
     let image: String
     let origin: Origin
+    let location: Location
     let episode: [String]
 }
 
 struct Origin: Decodable {
+    let name: String
+}
+
+struct Location: Decodable {
     let name: String
 }
