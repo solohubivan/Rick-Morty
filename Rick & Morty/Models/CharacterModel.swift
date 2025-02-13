@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct CharacterModel: Decodable {
     let id: Int
@@ -17,6 +18,7 @@ struct CharacterModel: Decodable {
     let origin: Origin
     let location: Location
     let episode: [String]
+    let imagePicture: Data?
 }
 
 struct Origin: Decodable {

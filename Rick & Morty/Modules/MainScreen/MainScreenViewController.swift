@@ -24,7 +24,8 @@ class MainScreenViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupCleanSwift()
-        interactor?.fetchCharacters()
+        setupNetworkMonitoring()
+        interactor?.checkConnectionAndGetData()
     }
     
     override func viewWillLayoutSubviews() {
@@ -43,6 +44,21 @@ class MainScreenViewController: UIViewController {
         self.interactor = interactor
         self.router = router
     }
+    
+    private func setupNetworkMonitoring() {
+        NetworkMonitor.shared.onUseOfflineModeAllert = { [weak self] in
+            guard let self = self else { return }
+            self.characters.removeAll()
+            let cachedCharacters = CacheManager.shared.loadAllFromCache()
+            self.displayCharacters(viewModel: MainScreenViewModel(characters: cachedCharacters))
+        }
+        
+        NetworkMonitor.shared.onUseOnlineModeAllert = { [weak self] in
+            guard let self = self else { return }
+            self.characters.removeAll()
+            self.interactor?.fetchCharacters()
+        }
+    }
 }
 
 // MARK: - UICollectionView properties
@@ -53,7 +69,7 @@ extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellID", for: indexPath) as? MainScreenCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppConstants.Identifiers.charactersCollectionViewCellID, for: indexPath) as? MainScreenCollectionViewCell else {
             return UICollectionViewCell()
         }
         
@@ -100,7 +116,7 @@ extension MainScreenViewController: MainScreenDisplayLogic {
 // MARK: - Setup UI
 extension MainScreenViewController {
     private func setupUI() {
-        self.title = "Rick and Morty"
+        self.title = AppConstants.MainScreenViewController.selfTitle
         setupNavigationVC()
         setupCharactersCollectionView()
     }
@@ -113,8 +129,8 @@ extension MainScreenViewController {
     }
 
     private func setupCharactersCollectionView() {
-        let nib = UINib(nibName: "MainScreenCollectionViewCell", bundle: nil)
-        charactersCollectionView.register(nib, forCellWithReuseIdentifier: "CellID")
+        let nib = UINib(nibName: AppConstants.Identifiers.charactersCollectionViewNibName, bundle: nil)
+        charactersCollectionView.register(nib, forCellWithReuseIdentifier: AppConstants.Identifiers.charactersCollectionViewCellID)
             
         charactersCollectionView.delegate = self
         charactersCollectionView.dataSource = self

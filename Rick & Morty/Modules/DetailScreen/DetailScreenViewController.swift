@@ -13,14 +13,14 @@ protocol DetailScreenDisplayLogic: AnyObject {
 
 class DetailScreenViewController: UIViewController {
     
-    @IBOutlet weak var characterNameLabel: UILabel!
-    @IBOutlet weak var characterImageView: UIImageView!
-    @IBOutlet weak var aliveSpeciesLabel: UILabel!
-    @IBOutlet weak var aliveStatusView: UIView!
-    @IBOutlet weak var genderLabel: UILabel!
-    @IBOutlet weak var originLabel: UILabel!
-    @IBOutlet weak var charactersLastLocationLabel: UILabel!
-    @IBOutlet weak var participatedEpisodesLabel: UILabel!
+    @IBOutlet weak private var characterNameLabel: UILabel!
+    @IBOutlet weak private var characterImageView: UIImageView!
+    @IBOutlet weak private var aliveSpeciesLabel: UILabel!
+    @IBOutlet weak private var aliveStatusView: UIView!
+    @IBOutlet weak private var genderLabel: UILabel!
+    @IBOutlet weak private var originLabel: UILabel!
+    @IBOutlet weak private var charactersLastLocationLabel: UILabel!
+    @IBOutlet weak private var participatedEpisodesLabel: UILabel!
     
     private var interactor: DetailScreenBusinessLogic?
     
@@ -81,8 +81,8 @@ extension DetailScreenViewController {
     }
     
     private func setupCharacterNameLabel() {
-        characterNameLabel.font = UIFont(name: "OpenSans-Bold", size: 28)
-        characterNameLabel.textColor = UIColor(red: 0.0118, green: 0.1451, blue: 0.2549, alpha: 1.0)
+        characterNameLabel.font = UIFont(name: AppConstants.Fonts.openSansBold, size: 28)
+        characterNameLabel.textColor = .darkBlueFontColor
     }
     
     private func setupCharacterImageView() {
@@ -90,27 +90,27 @@ extension DetailScreenViewController {
     }
     
     private func setupAliveSpeciesLabel() {
-        aliveSpeciesLabel.textColor = UIColor(red: 0.0118, green: 0.1451, blue: 0.2549, alpha: 1.0)
-        aliveSpeciesLabel.font = UIFont(name: "OpenSans-Semibold", size: 20)
+        aliveSpeciesLabel.textColor = .darkBlueFontColor
+        aliveSpeciesLabel.font = UIFont(name: AppConstants.Fonts.openSansSemibold, size: 20)
     }
     
     private func setupGenderLabel() {
-        genderLabel.textColor = UIColor(red: 0.0118, green: 0.1451, blue: 0.2549, alpha: 1.0)
-        genderLabel.font = UIFont(name: "OpenSans-Semibold", size: 18)
+        genderLabel.textColor = .darkBlueFontColor
+        genderLabel.font = UIFont(name: AppConstants.Fonts.openSansSemibold, size: 18)
     }
     
     private func setupOriginLabel() {
-        originLabel.textColor = UIColor(red: 0.0118, green: 0.1451, blue: 0.2549, alpha: 1.0)
-        originLabel.font = UIFont(name: "OpenSans-Semibold", size: 18)
+        originLabel.textColor = .darkBlueFontColor
+        originLabel.font = UIFont(name: AppConstants.Fonts.openSansSemibold, size: 18)
     }
     
     private func setupCharactersLastLocationLabel() {
-        charactersLastLocationLabel.textColor = UIColor(red: 0.0118, green: 0.1451, blue: 0.2549, alpha: 1.0)
-        charactersLastLocationLabel.font = UIFont(name: "OpenSans-Semibold", size: 18)
+        charactersLastLocationLabel.textColor = .darkBlueFontColor
+        charactersLastLocationLabel.font = UIFont(name: AppConstants.Fonts.openSansSemibold, size: 18)
     }
     
     private func setupParticipatedEpisodesLabel() {
-        participatedEpisodesLabel.textColor = UIColor(red: 0.0118, green: 0.1451, blue: 0.2549, alpha: 1.0)
-        participatedEpisodesLabel.font = UIFont(name: "OpenSans-Semibold", size: 18)
+        participatedEpisodesLabel.textColor = .darkBlueFontColor
+        participatedEpisodesLabel.font = UIFont(name: AppConstants.Fonts.openSansSemibold, size: 18)
     }
 }

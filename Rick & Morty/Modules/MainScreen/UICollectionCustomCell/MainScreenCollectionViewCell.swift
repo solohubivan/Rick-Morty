@@ -23,9 +23,15 @@ class MainScreenCollectionViewCell: UICollectionViewCell {
     // MARK: - Public methods
     func updateUI(with data: CharacterModel) {
         nameLabel.text = data.name
-        loadImage(from: data.image)
         aliveAndSpeciesLabel.text = "\(data.status.capitalized) - \(data.species.capitalized)"
-        characterOriginLabel.text = "Origin: \(data.origin.name)"
+        characterOriginLabel.text = "\(AppConstants.CharacterParameters.origin): \(data.origin.name)"
+
+        guard let imageData = data.imagePicture, let image = UIImage(data: imageData) else {
+            loadImage(from: data.image)
+            return
+        }
+        
+        characterImageView.image = image
     }
     
     // MARK: - Private methods
@@ -34,7 +40,7 @@ class MainScreenCollectionViewCell: UICollectionViewCell {
 
         URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard let self = self, let data = data, error == nil, let image = UIImage(data: data) else { return }
-                
+            
             DispatchQueue.main.async {
                 self.characterImageView.image = image
             }
@@ -64,14 +70,14 @@ extension MainScreenCollectionViewCell {
     
     private func setupNameLabel() {
         nameLabel.textColor = .white
-        nameLabel.font = UIFont(name: "OpenSans-SemiBold", size: 24)
+        nameLabel.font = UIFont(name: AppConstants.Fonts.openSansSemibold, size: 24)
     }
     
     private func setupAliveAndSpeciesLabel() {
-        aliveAndSpeciesLabel.font = UIFont(name: "OpenSans-Regular", size: 18)
+        aliveAndSpeciesLabel.font = UIFont(name: AppConstants.Fonts.openSansRegular, size: 18)
     }
     
     private func setupCharacterOriginLabel() {
-        characterOriginLabel.font = UIFont(name: "OpenSans-Regular", size: 16)
+        characterOriginLabel.font = UIFont(name: AppConstants.Fonts.openSansRegular, size: 16)
     }
 }

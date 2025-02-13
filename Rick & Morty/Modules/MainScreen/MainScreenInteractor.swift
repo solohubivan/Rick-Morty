@@ -8,6 +8,7 @@
 import Foundation
 
 protocol MainScreenBusinessLogic {
+    func checkConnectionAndGetData()
     func fetchCharacters()
 }
 
@@ -17,6 +18,16 @@ class MainScreenInteractor: MainScreenBusinessLogic {
     
     private var nextPageURL: String? = "https://rickandmortyapi.com/api/character"
     private var isLoading = false
+    
+    func checkConnectionAndGetData() {
+        if NetworkMonitor.shared.connectionMode == .online {
+            fetchCharacters()
+        } else {
+            let cachedCharacters = CacheManager.shared.loadAllFromCache()
+            let responseModel = MainScreenResponse(characters: cachedCharacters, nextPageURL: nil)
+            presenter?.presentCharacters(response: responseModel)
+        }
+    }
     
     func fetchCharacters() {
         guard let urlString = nextPageURL, let url = URL(string: urlString), !isLoading else { return }
@@ -34,6 +45,9 @@ class MainScreenInteractor: MainScreenBusinessLogic {
                     let responseModel = MainScreenResponse(characters: response.results, nextPageURL: response.info.next)
                     self.nextPageURL = response.info.next
                     self.presenter?.presentCharacters(response: responseModel)
+                    
+                    CacheManager.shared.saveAllToCache(response.results)
+                    
                     self.isLoading = false
                 }
             } catch {

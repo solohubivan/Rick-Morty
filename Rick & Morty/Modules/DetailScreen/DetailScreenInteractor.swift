@@ -16,24 +16,28 @@ class DetailScreenInteractor: DetailScreenBusinessLogic {
     var presenter: DetailScreenPresentationLogic?
     
     func fetchCharacterDetails(character: CharacterModel) {
+        let image = character.imagePicture != nil ? UIImage(data: character.imagePicture!) : nil
+            
         let viewModel = DetailScreenViewModel(
             name: character.name,
             aliveSpecies: "\(character.status.capitalized) - \(character.species.capitalized)",
-            gender: "Gender: \(character.gender)",
-            origin: "Origin: \(character.origin.name)",
-            lastLocation: "Last location: \(character.location.name)",
-            episodesCount: "Participated episodes amount: \(character.episode.count)",
+            gender: "\(AppConstants.CharacterParameters.gender): \(character.gender)",
+            origin: "\(AppConstants.CharacterParameters.origin): \(character.origin.name)",
+            lastLocation: "\(AppConstants.CharacterParameters.lastLocation): \(character.location.name)",
+            episodesCount: "\(AppConstants.CharacterParameters.participatedEpisodesAmount): \(character.episode.count)",
             statusColor: getStatusColor(for: character.status),
-            imageURL: character.image
+            imageURL: character.image,
+            image: image
         )
+            
         presenter?.presentCharacterDetails(response: viewModel)
     }
     
     private func getStatusColor(for status: String) -> UIColor {
         switch status.lowercased() {
-        case "alive":
+        case "\(AppConstants.CharacterParameters.alive)":
             return .systemGreen
-        case "dead":
+        case "\(AppConstants.CharacterParameters.dead)":
             return .systemRed
         default:
             return .systemGray

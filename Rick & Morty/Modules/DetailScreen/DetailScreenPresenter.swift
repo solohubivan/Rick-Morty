@@ -17,21 +17,28 @@ class DetailScreenPresenter: DetailScreenPresentationLogic {
     
     func presentCharacterDetails(response: DetailScreenViewModel) {
         var viewModel = response
-        
-        loadImage(from: response.imageURL) { image in
+            
+        if let image = response.image {
             viewModel.image = image
             DispatchQueue.main.async {
                 self.viewController?.displayCharacterDetails(viewModel: viewModel)
             }
+        } else {
+            loadImage(from: response.imageURL) { image in
+                viewModel.image = image
+                DispatchQueue.main.async {
+                    self.viewController?.displayCharacterDetails(viewModel: viewModel)
+                }
+            }
         }
     }
-    
+        
     private func loadImage(from urlString: String, completion: @escaping (UIImage?) -> Void) {
         guard let url = URL(string: urlString) else {
             completion(nil)
             return
         }
-        
+            
         DispatchQueue.global(qos: .background).async {
             if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
                 completion(image)
